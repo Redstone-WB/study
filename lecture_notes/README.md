@@ -1,3 +1,0 @@
-# advanced computer vision
-
-Resnet
