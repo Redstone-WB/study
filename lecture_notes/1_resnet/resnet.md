@@ -26,5 +26,9 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 - Main branch (일반적인 NN) + Shortcut brach (direct path from input to output, 'skip connection' 이라 불리기도 함.)
 
 4. Details and Convention
-- Final activation function은 addition (Main + Shortcut) 이후에 실행된댜ㅏ.
+- Final activation function은 addition (Main + Shortcut) 이후에 실행된다.
 ![resnet](./resnet.png)
+
+- Batchnorm을 weight 직후, relu 이전에 추가하는 경향성이 있음.
+- 참고 : Batchnorm을 쓰면, bias term를 쓸 필요가 없다!
+![batchnorm](./batchnorm.png)
