@@ -27,4 +27,4 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 
 4. Details and Convention
 - Final activation function은 addition (Main + Shortcut) 이후에 실행된댜ㅏ.
-![resnet](/Users/sktelecom/Desktop/resnet.png)
+![resnet](./Users/sktelecom/Desktop/resnet.png)
