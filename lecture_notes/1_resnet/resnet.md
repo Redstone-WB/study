@@ -33,5 +33,5 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 - 참고 : Batchnorm을 쓰면, bias term를 쓸 필요가 없다!
 ![batchnorm](./batchnorm.png)
 
-- CNN에 적용하는 Resnet, type #1.
+- CNN에 적용하는 Resnet, type #1. Identity Block
 ![resnet_1st_type](./resnet_1st_type.png)
