@@ -35,3 +35,10 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 
 - CNN에 적용하는 Resnet, type #1. Identity Block
 ![resnet_1st_type](./resnet_1st_type.png)
+
+- F(X) + X를 수행하기 위해서는, F(X)과 X와 동일한 size여야하지않는가? Yes!
+- But 예외도 있음. F(X) + W_s X 로 수행하기도 함. W_s 는 trainable parameters로 구성할 수도 있고, 
+  identity matrix w/zero padding으로 구성할 수도 있음.
+  
+  
+
