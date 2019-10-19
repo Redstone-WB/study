@@ -51,3 +51,9 @@ cf. BN, Pooling layer는 세지 않음. (물론 당연하게도, batchnorm layer
 
 ![resnet_50layers](./resnet_50layers.png)
   
+  
+- 출처 : resnet 원논문
+![resnet_paper](./resnet_paper.png)
+
+적은 연산량 : Resnet w/ 34 layers는 VGG19의 18% 가량의 operation만을 필요로 함.
+  
