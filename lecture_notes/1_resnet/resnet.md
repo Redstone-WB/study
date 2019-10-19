@@ -44,6 +44,9 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
   shortcut branch에 대해, 1개의 W와 BN을 거쳐서 더함.
 ![resnet_2nd_type](./resnet_2nd_type.png)
   
-  
+5. 참고
+- Keras package를 통해 사용해 볼 Resnet model은 50 layers로 구성! (VGG16 의 3배 크기)
+- pre-trained weights in keras 사용
+cf. BN, Pooling layer는 세지 않음.
   
   
