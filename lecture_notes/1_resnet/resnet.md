@@ -48,5 +48,6 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 - Keras package를 통해 사용해 볼 Resnet model은 50 layers로 구성! (VGG16 의 3배 크기)
 - pre-trained weights in keras 사용
 cf. BN, Pooling layer는 세지 않음. (물론 당연하게도, batchnorm layer는 trainable param.인 gamma(표준편차), beta(평균)를 가짐.)
-  
+
+![resnet_50layers](./resnet_50layers.png)
   
