@@ -40,5 +40,10 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 - But 예외도 있음. F(X) + W_s X 로 수행하기도 함. W_s 는 trainable parameters로 구성할 수도 있고, 
   identity matrix w/zero padding으로 구성할 수도 있음.
   
+- Type #2. Conv Block
+  shortcut branch에 대해, 1개의 W와 BN을 거쳐서 더함.
+![resnet_2nd_type](./resnet_2nd_type.png)
   
-
+  
+  
+  
