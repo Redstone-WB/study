@@ -32,3 +32,6 @@ But, NN를 학습하려고 할 때 문제가 발생한다.
 - Batchnorm을 weight 직후, relu 이전에 추가하는 경향성이 있음.
 - 참고 : Batchnorm을 쓰면, bias term를 쓸 필요가 없다!
 ![batchnorm](./batchnorm.png)
+
+- CNN에 적용하는 Resnet, type #1.
+![resnet_1st_type](./resnet_1st_type.png)
