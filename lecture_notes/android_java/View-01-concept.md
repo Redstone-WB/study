@@ -1,5 +1,5 @@
 XML
-- 안드로이드에서 View르 그리는데 사용되는 언어
+- 안드로이드에서 View를 그리는데 사용되는 언어
 - DSL (Domain Specific Language)
 
 View Component
@@ -24,3 +24,6 @@ View Component의 종류
 
 각각의 ViewComponent들은 고유 속성으 가지고 있음
 ex> TextView의 TextColor, TextSize
+
+화면 크기 단위는 Px (화면 크기에 상관없이, 고정된 크기로 보여짐), dp로 지정 가능 (화면 크기에 비율로 반영)
+=> 일반적으로 dp 사용
