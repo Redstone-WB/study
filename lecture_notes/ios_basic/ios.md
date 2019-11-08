@@ -15,13 +15,13 @@
 
 ### 11강
 
--Object : 특정 Task (직무) 를 수행하는 녀석. (cf. OOP : Objected Oriented Programming)
+- Object : 특정 Task (직무) 를 수행하는 녀석. (cf. OOP : Objected Oriented Programming)
 
 ex> UIalertController : 앱을 사용하는 중간에 특정 alert를 띄워서 메시지를 전달하는 것이 목적
 
--ios 개발에서 가장 많이 활용할 예정인 Object는, ViewController
+- ios 개발에서 가장 많이 활용할 예정인 Object는, ViewController
 
--Object는 Data와 Method(기능)으로 구성됨.
+- Object는 Data와 Method(기능)으로 구성됨.
 
 ### 13강
 - Storyboard에 있는 ViewComponent를 @IBOutlet으 이용하여 Code에 연결할 수 있음.
