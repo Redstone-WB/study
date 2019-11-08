@@ -17,5 +17,5 @@
 
 -Object : 특정 Task (직무) 를 수행하는 녀석.
 (cf. OOP : Objected Oriented Programming)
-ex> UIalertController : 앱을 사용하는 중간에 특정 alert를 띄워서 메시지를 전달하는 것이 목적
+  ex> UIalertController : 앱을 사용하는 중간에 특정 alert를 띄워서 메시지를 전달하는 것이 목적
 
