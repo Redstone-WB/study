@@ -19,3 +19,19 @@
 
 ex> UIalertController : 앱을 사용하는 중간에 특정 alert를 띄워서 메시지를 전달하는 것이 목적
 
+-ios 개발에서 가장 많이 활용할 예정인 Object는, ViewController
+
+-Object는 Data와 Method(기능)으로 구성됨.
+
+### 13강
+- Storyboard에 있는 ViewComponent를 @IBOutlet으 이용하여 Code에 연결할 수 있음.
+
+### 14강
+
+- var (변수, variable) vs let (상수, constant)
+- variable을 최대한 적게, constant를 최대한 많이
+(variable은 변경이 쉽기 때문에, 버그가 많이 발생할 수 있음.)
+
+### 15강
+- 서너 줄 이상 중복 사용되는 코드가 있다면, 이를 메서드로 만드는 것을 습관화 하라!
+- 
