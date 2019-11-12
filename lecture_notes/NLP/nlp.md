@@ -11,3 +11,5 @@
 - Analogies (King - man = Queen - woman)
 
 
+Machine Translation -> Seq2Seq model 보통 사용 (input seq과 output seq. 길이 달라도 ok.)
+
