@@ -6,3 +6,8 @@
 ### Category 2. Embeddings
 - Word2Vec, GloVe
 - Gives words a location
+- models relationships between words
+- Word similarities 
+- Analogies (King - man = Queen - woman)
+
+
