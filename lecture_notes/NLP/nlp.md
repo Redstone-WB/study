@@ -18,4 +18,4 @@ Machine Translation -> Seq2Seq model 보통 사용 (input seq과 output seq. 길
 input이 string이 아닌 숫자 형태여야 함. => Word Embedding
 - Sol#1 : One-hot encoding
 - Feature Vector ? Data table에서 each row를 가리킴
-- We want feature vectors to place things (points) in a <u>meaningful position</u> relative to each other.
+- We want feature vectors to place things (points) in a <ins> meaningful position </ins> relative to each other.
