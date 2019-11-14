@@ -17,3 +17,4 @@ Machine Translation -> Seq2Seq model 보통 사용 (input seq과 output seq. 길
 - Why? weights와 biases (선형결합)를 학습하여 classification/regression 을 수행하기 위해서는
 input이 string이 아닌 숫자 형태여야 함. => Word Embedding
 - Sol#1 : One-hot encoding
+- Feature Vector ? Data table에서 each row를 가리킴
