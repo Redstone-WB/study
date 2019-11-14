@@ -35,4 +35,5 @@ Train Pre-trained embeddings? :
 - model.fit(X,Y) 는 model의 all parameters를 update 한다.
 - pre-trained words에 포함되지 않았던 새로운 단어들은 randomly initialized 되었으므로, 학습이 필요하다.
 - 그러나, 대부분의 library들은 updating only a subset of matrix를 허용하지 않음.. => Q. library 아니라면, 방법론이 나와 있을까?
+(해결책 링크 : https://discuss.pytorch.org/t/update-part-of-word-embeddings-during-training/7617)
 - library상에서는, 전체를 train하던가, 아니면 아예 하지 않던가 임.
