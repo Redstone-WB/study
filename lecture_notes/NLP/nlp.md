@@ -37,4 +37,4 @@ When using Pre-trained weights :
 - 그러나, 대부분의 library들은 updating only a subset of matrix를 허용하지 않음.. => Q. library 아니라면, 방법론이 나와 있을까?
 (해결책 링크 : https://discuss.pytorch.org/t/update-part-of-word-embeddings-during-training/7617)
 - library상에서는, 전체를 train하던가, 아니면 아예 하지 않던가 임.
-- ㅅ
+- 실제 데이터에서는, fine-tuningㅇ
