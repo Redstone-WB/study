@@ -43,6 +43,6 @@ When using Pre-trained weights :
   - To keep it constant : embedding_layer.trainable = False
   
   cf. CNN에서의 Convolution은 원래 'Cross-Correlation' 이 정식 명칭이다.
-  - 이미지에서 Edge detection 등의 목적의 filter로도 쓰이지만,
-  - echo, reverb 등의 sound effect를 audio에 삽입할 때도 쓰인다.
+  - 이미지에서 Edge detection 등의 목적의 filter로도 쓰이지만, (2-D)
+  - echo, reverb 등의 sound effect를 audio에 삽입할 때도 쓰인다. (audio signal : 1-D)
 
