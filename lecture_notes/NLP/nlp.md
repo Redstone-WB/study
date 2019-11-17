@@ -41,3 +41,5 @@ When using Pre-trained weights :
 - Keras code :
   - To fine-fune : embedding_layer.trainable = True (default)
   - To keep it constant : embedding_layer.trainable = False
+  
+  cf. CNN에서의 Convolution은 원래 'Cross-Correlation' 이 정식 명칭이다.
