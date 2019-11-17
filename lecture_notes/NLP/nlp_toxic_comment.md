@@ -5,5 +5,6 @@
 - sol#1 : 6개의 서로 다른 binary classification 문제로 풀기
     - 6개의 logistic reg.를 수행하는 하나의 NN를 만든다.
     - Total loss : average binary cross entropy
+![nlp_multilabel_problem](./nlp_multilabel_problem.png)
 
 
