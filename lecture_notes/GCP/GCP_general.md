@@ -16,6 +16,11 @@
 - "역방향 API" 라고도 합니다 . 일반적인 API는 클라이언트가 서버를 호출합니다. 반면 웹훅의 경우 웹훅 (클라이언트에서 제공하는 URL)을 호출하는 서버 측에 등록하면 서버에서 특정 이벤트가 발생했을 때 클라이언트를 호출합니다.
 * 특정한 Event가 발생하면 ➔ Trigger로 웹훅이 동작하고 -> 지정한 Action이 일어납니다
   
+  
+  cf. [Hello Node Kubernetes]
+  
+  - Link : https://google.qwiklabs.com/focuses/564?parent=catalog
+  
  ![kubect](./kubect.png)
 
 
