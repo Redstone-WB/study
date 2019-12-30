@@ -17,9 +17,8 @@
 * 특정한 Event가 발생하면 ➔ Trigger로 웹훅이 동작하고 -> 지정한 Action이 일어납니다
   
   
-  cf. [Hello Node Kubernetes]
-  
-  - Link : https://google.qwiklabs.com/focuses/564?parent=catalog
+cf. [Hello Node Kubernetes]
+- Link : https://google.qwiklabs.com/focuses/564?parent=catalog
   
  ![kubect](./kubect.png)
 
