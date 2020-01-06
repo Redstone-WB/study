@@ -3,7 +3,10 @@
 
 -----2020 Ongoing
 1. GCP : Docker, Kubernetes
+  - Architecting with Google Compute Engine Specialization
+  - GCP in Action 
 2. React
+
 
 완독 : 모두의 네트워크
 독서중 : 실습과 그림으로 배우는 리눅스 구조 
