@@ -5,6 +5,9 @@
 1. GCP : Docker, Kubernetes
 2. React
 
+완독 : 모두의 네트워크
+
+
 -----2020 To-do
 1. GO
 
