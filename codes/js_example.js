@@ -1,3 +1,6 @@
+//코드실습 : https://jsbin.com/
+
+
 var pizza = True
 pizza = false
 console.log(pizza) //false 출력
@@ -17,7 +20,15 @@ if (topic) {
 }
 console.log('글로벌', topic)
 
-////////////////// ${}를 사용하여 문자열 안에 변수 삽입. ₩로 전체 문자열을 묶어 줘야함.
+////////////////// ${}를 사용하여 문자열 안에 변수 삽입. `로 전체 문자열을 묶어 줘야함.
 var lastName = 'HA';
 const firstName = 'Hongseok';
 console.log(`Hello : ${lastName}, ${firstName}`);
+
+/////기본 함수 형태와 디폴트 값 선언
+function logActivity(name ="하홍석", activity="주짓수"){
+  console.log(`${name}은 ${activity}를 좋아합니다.`)
+}
+logActivity()
+
+////
