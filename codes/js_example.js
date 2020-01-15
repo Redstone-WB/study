@@ -17,4 +17,7 @@ if (topic) {
 }
 console.log('글로벌', topic)
 
-//////////////////
+////////////////// ${}를 사용하여 문자열 안에 변수 삽입. ₩로 전체 문자열을 묶어 줘야함.
+var lastName = 'HA';
+const firstName = 'Hongseok';
+console.log(`Hello : ${lastName}, ${firstName}`);
