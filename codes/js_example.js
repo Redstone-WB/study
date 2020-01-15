@@ -26,8 +26,17 @@ const firstName = 'Hongseok';
 console.log(`Hello : ${lastName}, ${firstName}`);
 
 /////기본 함수 형태와 디폴트 값 선언
-function logActivity(name ="하홍석", activity="주짓수"){
-  console.log(`${name}은 ${activity}를 좋아합니다.`)
+var defaultPerson = {
+  name : {
+    first : "Redstone",
+    last : "Ha"
+  },
+  activity : "주짓수"
+  
+}
+
+function logActivity(p=defaultPerson){
+  console.log(`${p.name.first}은 ${p.activity}를 좋아합니다.`)
 }
 logActivity()
 
