@@ -40,4 +40,15 @@ function logActivity(p=defaultPerson){
 }
 logActivity()
 
-////
+////전통적인 함수
+var lordify = function(firstname){
+  return `캔터베리의 ${firstname}`
+}
+
+console.log(lordify("하홍석"))
+
+////위와 동일한 화살표 함수
+var lordify = firstname => `캔터베리의 ${firstname}`
+console.log( lordify('하홍석') )
+
+
