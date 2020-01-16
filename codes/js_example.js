@@ -51,7 +51,7 @@ console.log(lordify("하홍석"))
 var lordify = firstname => `캔터베리의 ${firstname}`
 console.log( lordify('하홍석') )
 
-//// 화살표 함수는 새로운 this 영역을 만들어 내지 않는다. (<=> this를 새로 바인딩하지 않는다.
+//// 화살표 함수는 새로운 this 영역을 만들어 내지 않는다. (<=> this를 새로 바인딩하지 않는다.)
 var gangwon = {
   resorts : ["용평", "평창", "강촌", "안산"],
   print : function(delay=1000) {
@@ -62,4 +62,20 @@ var gangwon = {
   }
 }
 gangwon.print() // 용평, 평창, 강촌, 안산
+
+
+var strangers = ["태완", "지호", "정우", "홍석"]
+
+var gangwon = {
+  resorts : ["용평", "평창", "강촌", "홍천"],
+  print : (delay=1000) => {
+    setTimeout(() => {
+      console.log(this.strangers.join(",")) // print function() 화살표 함수로 바꾼 경우, this가 window (global) 객체가 된다.
+    }, delay)
+    
+  }
+}
+gangwon.print() // 따라서, strangers를 받아서 print가 가능하다.
+
+
 
