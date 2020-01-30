@@ -2,7 +2,9 @@
 
 
 -----2020 Ongoing
-1. GCP : Docker, Kubernetes
+1. Cloud 
+  - GCP -> AWS
+  - Docker, Kubernetes
   - Architecting with Google Compute Engine Specialization
   - GCP in Action 
 2. React
