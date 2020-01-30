@@ -1,0 +1,12 @@
+### Services
+
+- The AWS Amplify CLI, to rapidly provision and configure our cloud services
+- The AWS Amplify JavaScript library, to connect our front end to cloud resources
+- Amazon Cognito, to handle user sign up authorization
+- Amazon Simple Storage Service (S3), to store and serve as many photos as our users care to upload, and to host the static assets for our app
+- Amazon DynamoDB, to provide millisecond response times to API queries for album and photo data
+- AWS AppSync, to host a GraphQL API for our front end
+- AWS Lambda, to create photo thumbnails asynchronously in the cloud
+- Amazon Rekognition, to detect relevant labels for uploaded photos
+- Amazon Elasticsearch Service, to index and search our photos by their labels
+
