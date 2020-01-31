@@ -2,6 +2,7 @@
 
 - The AWS Amplify CLI, to rapidly provision and configure our cloud services
 - The AWS Amplify JavaScript library, to connect our front end to cloud resources
+  - "As we saw above, AWS Amplify is an open source JavaScript library that makes it very easy to integrate a number of cloud services into your web or React Native apps."
 - Amazon Cognito, to handle user sign up authorization
 - Amazon Simple Storage Service (S3), to store and serve as many photos as our users care to upload, and to host the static assets for our app
 - Amazon DynamoDB, to provide millisecond response times to API queries for album and photo data
