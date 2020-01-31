@@ -3,7 +3,7 @@
 
 -----2020 Ongoing
 1. Cloud 
-  - GCP -> AWS
+  - GCP -> AWS (because of data connection issue)
   - Docker, Kubernetes
   - Architecting with Google Compute Engine Specialization
   - GCP in Action 
@@ -11,8 +11,8 @@
 
 
 
-완독 : 모두의 네트워크  
-독서중 : 실습과 그림으로 배우는 리눅스 구조, GCP in Action
+Finished : 모두의 네트워크 , Learning React, GCP in Action
+Ongoing : 실습과 그림으로 배우는 리눅스 구조, AWS tutorials
 
 -----2020 To-do
 
