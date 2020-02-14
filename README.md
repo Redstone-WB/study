@@ -6,17 +6,20 @@
   - GCP -> AWS (because of data connection issue)
   - Docker, Kubernetes
   - Architecting with Google Compute Engine Specialization
-  - GCP in Action 
 2. React
 
 
 
 Finished : 모두의 네트워크 , Learning React, GCP in Action
-Ongoing : 실습과 그림으로 배우는 리눅스 구조, AWS tutorials
+Later : 그림으로 공부하는 IT인프라 구조
+Ongoing : 실습과 그림으로 배우는 리눅스 구조, AWS tutorials, Go in Action
+
 
 -----2020 To-do
 
 1. GO
+  - Go in Action
+  - Nomad Coders : Go
 
 
 
