@@ -17,5 +17,9 @@
    1.  slice에 value를 추가하기 위해서는, append() 를 씀.
    2.  names := []string{"Redstone", "Jenny"}
    3.  names = append(names, "Hongseok")   // append는 new slice를 return하기 때문에.
+10. map
+    1.  rdst := map[string]string{"name" : "Redstone", "age" : "29"} // [key의 type] value의 type
+
+
 
 
