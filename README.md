@@ -13,9 +13,9 @@
 
 
 -----2020 Book
-Ongoing : 그림으로 공부하는 IT인프라 구조
-Pending : GCP in Action, 실습과 그림으로 배우는 리눅스 구조
-Done : 모두의 네트워크 , Learning React
+1. Ongoing : 그림으로 공부하는 IT인프라 구조
+2. Pending : GCP in Action, 실습과 그림으로 배우는 리눅스 구조
+3. Done : 모두의 네트워크 , Learning React
 
 
 
