@@ -12,3 +12,6 @@
 - Amazon Rekognition, to detect relevant labels for uploaded photos
 - Amazon Elasticsearch Service, to index and search our photos by their labels
 
+### Udemy Lecture
+
+- 1 Region 안에는 2개 이상의 AZ가 있음. AZ는 1개 이상의 data center으로 구성.
