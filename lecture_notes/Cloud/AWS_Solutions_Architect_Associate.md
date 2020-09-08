@@ -246,4 +246,231 @@
 
 - 'Fight DR. MC PXZ (in) AU (strailia) 로 외울 수 있음.
 
-####
+#### EC2 이어서
+
+- Termination Protection is turned off by default, you must turn it on.
+- On an EBS-backed instance, the default action is for the root EBS volume to be deleted when the instance is terminated
+  - 추가된 EBS volume들은 'Delete on Termination'이 체크되어 있지 않음.
+- EBS Root Volumnes of your DEFAULT AMI's CAN be encrypted. 서드파티 툴 (ex> bit locker)을 사용하여 encrpyt할 수도 있음.
+- Additional Volumne 들도 encrpyt 가능.
+- (네트워크) Security Group에서 Rule change할 경우, 해당 변동사항은 '즉각' 반영된다.
+  - Security group으로는 특정 IP주소나 특정 PORT를 block할 수 없다 --> network access control list로 가능함.
+  - 대신 Default option으로 모든 IP나 PORT가 blocked 되어 있다. 여기서 하나씩 열어 주는 것.
+    - All Inbound traffic is blocked by default
+    - All Outbound traffic is allowed
+    - 하나의 security group에 무제한으로 많은 EC2 instances를 배정할 수 있고, EC2 instance에도 여러 개의 서로 른 security groups를 할당 가능하다.
+    - Security Groups are STATEFUL
+      - 만약 Inbound rule을 만들어서 특정 traffic을 들어오게 한다면, 자동으로 traffic은 back out 하는것이 허용된다.
+      - 특정 IP 주소만 Security Group으로 막을 수 없음.
+        - Allow rule은 지정 가능하다, 그러나 deny rule은 불가능함.
+
+### EBS
+
+- EBS : Elastic Block Store. Virtual Hardisk in Cloud
+  - provides persistent block storage volumnes for use with EC2 instances
+  - AZ 안에서 각 EBS는 자동으로 replicate 된다.
+  - Volumnes exist on EBS. EBS는 virtual HDD라고 생각하면 됨.
+  - EBS volume size는 on the fly로 바꿀 수 있음, storage type도 바꿀 수 있음.
+- Snapshot
+  - Snapshots exist on S3. Snapshot은 disk에 대한 photograph임.
+  - Snapshots are point in time copies of Volumnes
+    - Snapshots are incremental.
+    - last snapshot이 S3로 옮겨지고 나서 바뀐 block들만 복사됨.
+  - Root device 기능을 하는 EBS volume의 스냅샷을 만들기 위해서는, 그 전에 instance를 중지 시키는 것이 좋다.
+    - 그러나, instance가 작동 중일때도 스냅샷을 찍는 것이 가능함
+  - Snapshot을 가지고 AMI를 만들 수도 있음
+- 5종류
+  - General Purpose (SSD)
+    - 대부분의 Work Load에 활용, API Name : gp2
+  - Provisioned IOPS (SSD)
+    - Database에 활용, API Name : io1
+    - performance가 가장 좋은 디스크
+  - Throughput Optimized HDD
+    - Big Data Warehouse에 활용, API Name : st1
+  - Cold HDD
+    - File Servers, API Name : sc1
+  - Magnetic
+    - Previous generation HDD, infrequently accessed data, API Name : Standard
+- (중요) Volumne은 그것과 연결된 EC2 Instance와 동일한 AZ에 생성된다!
+- 만약 연결된 EC2 인스턴스가 지워지면? ROOT 볼륨도 지워진다.
+  - 그러나, additional 볼륨은 안 지워짐.
+  - EC2 인스턴스를 중지시키면? ROOT volume은 남아 있다.
+- (시험문제) 만약 Root device volumne 을 다른 AZ로 옮기고 싶다면??
+  - Create Snapshot > Create Image > 만든 이미지로 다른 AZ에 New instance 시작 
+  - AMI 이미지의 경우, 'Copy AMI' 를 통해 다른 Region으로 복사할 수 있다. --> 이걸로 해당 Region에서 동일한 인스턴스를 시작할 수 있음.
+- AMI를 선택할 수 있는 기준들
+  - Region 
+  - OS
+  - Architecture (32-bit or 64-bit)
+  - Launch Permissions
+  - Storage for the Root Device (Root Device Volume)
+    - (참고) 모든 AMI는 backed by Amazon EBS 이거나, backed by instance store 이다! (Root device type에 의해 분류됨.)
+    - EBS backed volumes
+      - Root device for instance launched from the AMI is an Amazon EBS volume, created from an Amazon EBS snapshot
+      - can be stopped, 만약 stop 되어도 데이터를 잃지 X
+    - Instance Store Volumes (EPHEMERAL STORAGE)
+      - Root device for an instance launched from the AMI is an instance store volume created from a template stored in Amazon S3.
+      - (참고) EBS backed volume이 아니라, Instance store인 경우, 중지 시킬 수가 없음. 바로 terminate 시켜야,,
+      - 만약 OS에 문제가 생겼다? 그럼 데이터도 다 날아가는 것임. = Ephemeral
+        (Instance store volumes cannot be stopped. If the underlying host fails, you will lose your data)
+    - Reboot는 두 타입 모두 가능. 두 경우에 data lost는 둘 다 X
+    - By defualt, 두 타입 모두 ROOT volume이 인스턴스 termination 시에 삭제된다. 그러나, EBS volume이면 root device volume을 지삭제하지 않도록 설정할 수 있음.
+- Root Device Volume 암호화
+  - 처음에 EC2 instance provision할 때 encrpyt 할 수 있음
+  - unencrpyted 로 EC2 instance를 provision 했다면? snapshot을 찍고, snapshot을 copy하면서, encrypt시킬 수 있다!
+    - 마지막 snapshot으로부터 AMI를 만들고, 이걸 기반으로 launch encrpyted root device volume 할 수 있음.
+    - Snapshots of encrypted volumes are encrypted automatically.
+    - Volumes restored from encrypted snapshots are encrypted automatically
+    - You can share snapshots, but only if they are unencrypted
+    - Snapshots can be shared with other AWS accounts or made public
+- Spot Instances
+  - Use cases : Big data & analytics, Containerized workloads, CI/CD and testing, Web services, Image and media rendering, High-performance computing
+  - Not good fot : persistent workloads, critical jobs, databases
+  - spot instance는 on-demand에 비해 90%까지 비용을 절약할 수 있게 해준다.
+  - persistent storage가 필요하지 않은 종류의 computing에 유용하다
+  - Spot block을 이용해서 spot instance가 terminate 되지 않도록 할 수 있다
+- Spot Fleets : collection of spot instances, and (optionally) on-demand instances
+  - maximum price를 정하면, 그것을 넘지 않게 Spot instance와 on-demand instance를 조합하여 target capacity 를 맞추는 것.
+  - spot fleets will stop launching instances, once you reach your price threshold or capacity desire
+- EC2 Hibernate
+  - EC2 instance를 hibernate 시키면, OS는 hibernation (suspend-to-disk)을 수행하게 된다.
+  - Hibernation saves the contents from the instance memory (RAM) to your Amazon EBS root volume
+    - RAM에서 데이터를 빼서 EBS root volume에 저장하게 하는 것
+    - Reboot 할때, 매우 빨라진다.
+      - How? hibernation 후에 다시 instance를 start 하면, EBS root volume이 previous state로 restore 된다.
+      - RAM content도 reload 된다.
+      - OS, app 등을 다시켜고 할 필요가 없이 기존 상태로 돌려 놓으므로, boot up이 매우 빠르다
+      - Previously attached data volumes are reattached and the instance retains its instance ID (같은 Instance 임을 인식)
+      - Instance RAM must be less than 150 GB
+      - 60일 이상 hibernate 할 수는 없다
+      - Available for On-demand instances and Reserved instances
+  - Instance의 EBS root volume과 다른 attached Ebs data volumes 들은 persist 한다.
+  - Use cases : Long-running processes, Services that take time to initialize
+
+### ENI vs ENA vs EFA
+
+- ENI : Elastic Network Interface, 가상 네트워크 카드 for EC2 instance 이다.
+  - For basic networking / when you need a separate management network or a separate logging network and you need to do this at low cost --> multiple ENIs for each network
+- EN : Enhanced Networking, ENA는 EN의 subset, reliable & high throughput이 필요한 경우 사용
+  - Uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities
+    - SR-IOV : device 가상화 방법론으로, higher I/O 퍼포먼스와 lower CPU utilization 을 제공한다. (전통적 네트워크 가상화 인터페이스에 비해)
+  - no addtional charge for using EN, 그러나 user가 사용하고 있는 EC2 type이 EN을 지원해야 함.
+  - 고성능 network가 필요한 경우 사용
+  - ENA (Elastic Network Adaptor) : 100Gbps 까지 속도를 높임
+  - Intel 82599 Virtual Function (VF) : 10 Gbps까지.. 이건 older instance 들에 사용됨.
+- EFA : Elastic Fabric Adaptor
+  - network device, that you can attach to EC2 instance, to acclerate High PErformance COmputing (HPC) and ML applications
+  - Os-bypass 사용 가능. Os-bypass는 HPC와 ML app.들이 OS system kernel을 bypass하여, EFA device와 직접 communicate 할 수 있도록 함. --> lower latencty, 지금은 window에서 지원X, Linux만 됨.
+
+
+
+### CloudWatch
+
+- monitoring service, to monitor your AWS resources, as well as the applications that you run on AWS.
+- 무엇을 monitor 하나? Performacne!
+
+  - Compute : EC2 instances, Autoscaling Groups, Elastic Load Balancers, Route53 Health Checks
+  - Storage & Content Delivery : EBS VOlumes, Storage Gageways, CloudFront
+- Cloudwatch가 EC2에서 monitoring 할 때
+
+  - Host Level Metrics consist of : CPU, Network, Disk, Status Check
+- AWS CloudTrail : CCTV와 같은 service
+  - Increases visibility into your user and resource activity by recording AWS Management Console actions and API calls.
+  - You can identify which users and accounts called AWS, the source IP address from which the calls were made, and when the calls occurred.
+- Cloudwatch는 performace를 monitor하고, CloudTrail은 API calls in the AWS Platform을 monitor 함.
+- CloudWatch with EC2 will monitor events, every 5 minutes by default
+- You can have 1 minute intervals by turning on detailed monitoring
+- You can create CloudWatch alarms which trgiger notifications (ex. billing alarm)
+- Standard Monitoring = 5 Minutes
+- Detailed Monitoring = 1 Minute
+- Dashboards : 내 AWS environment에서 어떤 일이 일어나고 있는지 보기 위한 대시보드를 만들 수 있음
+- Alarms : particular thresholds 를 hit 했을 때, notify해 주는 alarm 설정 가능
+- Events : CloudWatch Events helps you to respond to state changes in your AWS resources
+- Logs : aggregate, monitor, and store log data
+
+
+
+### Roles
+
+- Roles are mroe secure than storing access key and secret access key on individual EC2 instances.
+  - ~/.aws 폴더 안에 key 정보를 해킹당하면 낭패
+- Roles are easier to manage
+  - 1000개 instance에 대한 secret key 를 잃어버렸다면,, role로 처리 가능
+- Roles can be assigned to an EC2 instance after it is created, using both the console & command line
+- Roles are universal
+
+
+
+### 참고 : Boot Strap Scripts
+
+- EC2 생성할 때 '고급 세부정보' 항목에서,, user data 항목
+  - #! (shebang) 으로 시작
+  - #!/bin/bash : path to our interpreter, and our interpreter basically just takes the commands and runs them at the root level
+  - yum update -y
+  - yum install httpd -y
+  - service httpd start
+  - chkconfig httpd on
+  - cd /var/www/html
+  - echo "<html><h1>재으니는 열일중! 곧 본담~</h1></html>" > index.html
+  - aws s3 mb s3://randombucketredstone
+  - aws s3 cp index.html s3://randombucketredstone. : index.html을 bucket에 backup
+- boot up 할때 실행되는 스크립트를 보려면, EC2 에 ssh로 연결한 뒤에
+  - curl http://169.254.169.254/latest/user-data > bootstrap.txt
+- Instance에 대한 information (meta-data)를 얻으려면,, 
+  - curl http://169.254.169.254/latest/meta-data
+  - 하위 카테고리 ipv4를 보려면,,, : curl http://169.254.169.254/latest/meta-data/local-ipv4
+
+
+
+### EFS (Elastic File System)
+
+- file storage service for Amazon EC2 instances
+  - storage capacity is elastic, growing and shrinking automatically as you add and remove files
+- EBS와의 차이점
+  - EBS는 virtual disk를 하나의 EC2 instance에만 mount할 수 있음 (두 개 이상의 EC2 instances가 EBS volume 하나를 share X)
+  - EFS는 여러개의 EC2 nstances들이 share할 수 있음
+- EFS Supports Network File System version 4 (NFSv4) protocol
+- only pay for the storage you use (no pre-provisioning required)
+- Can scale up to the terabytes
+- Can support thousands of concurrent NFS connections
+- Data is stored across multiple AZ's within a region
+- Read After Write Consistency
+
+
+
+### EC2 Placement Groups
+
+- Clustered
+
+  - group of instances within a single AZ
+  - low network latency, high network throughput이 필요한 경우에 추천
+  - only certain instances can be launched in to a Clustered Placement Group
+    - Compute Optimized, GPU, memory Optimized, Storage Optimized...
+    - AWS recommend homogeneous instances within clustered placement groups
+  - can't span multiple AZ
+
+- Spread
+
+  - group of instances that are each placed on distinct underlying hardware
+  - 적은 수의 중요한 instances (that should be kept separate from each other) 로 이루어진 app들에 추천
+
+- Partitioned
+
+  - spread와 유사하지만,, partition 안에는 multiple EC2 들이 있음. (spread는 single instance들이 각각 나뉘어 있음)
+  - 각각의 partition은 its own set of racks를 가진다.
+  - Each rack has its own network and power source
+  - HDFS, HBase, Cassandra
+
+- Spread/Partitioned can span multiple AZs, but region을 다양하게는 X
+
+- placement group 에 대한 Name은 AWS account 내에서 unique해야 한다.
+
+- You can't merge placement groups
+
+- existing instance를 placement group으로 옮길 수 있다.
+
+  - instance를 옮기기 위해, instance는 stopped state여야 한다.
+  - AWS CLI / SDK를 사용하여 옮길 수 있으나 console에서는 아직 불가능하다
+
+  
+
